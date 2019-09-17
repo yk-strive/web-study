@@ -1,0 +1,300 @@
+@import 'common.less';
+
+.my-dot{
+	width: .1rem;
+	height: .1rem;
+	border-radius: 100%;
+	background: rgba(0, 0, 0, .4);
+	opacity: 1;
+}
+.my-dot-active{
+	background: #ff6600;
+  	opacity: 1;
+}
+
+.nav-active{
+	background-color: #D9D9D9;
+}
+#content_3{
+	margin-top: 0.1rem;
+}
+#content_3 .content-box .content{
+	width: 100%;
+	height: 4.7rem;
+	div.left, div.center, div.right{
+		height: 100%;
+	}
+	div.left{
+		width: 1.9rem;
+		float: left;
+		margin-right: 0.1rem;
+		background-color: #FFFFFF;
+		position:relative;
+		.nav-box{
+			width: 100%; height: 100%;
+			padding: 0.08rem 0;
+			.nav-item{
+				width: 100%;
+				padding: 0 0.05rem 0 0.14rem;
+				height: 0.25rem;
+				line-height: 0.25rem;
+				.nav-item-name{
+					color: #333;
+					font-size: 0.14rem;
+					&:hover{
+						color: @text-color-hover;
+						cursor: pointer;
+					}
+				}
+			}
+		}
+		.nav-sub{
+			//display: none;
+			position: absolute;
+			top: 0;
+			left: 1.91rem;
+			z-index: 100;
+			width: 9.98rem;
+			min-height: 100%;
+			background: #FFFFFF;
+			box-shadow: 0.02rem 0.02rem 0.02rem 0.02rem #eaeaea;
+			div.sub-content{
+				.title{
+					color: @text-color-hover;
+					height: .5rem;
+					line-height: .5rem;
+					text-align: center;
+					font-size: .20rem;
+				}
+				padding-left: .2rem;
+				dl{
+					position: relative;
+					padding-left: .8rem;
+					dt{
+						overflow: hidden;
+						position: absolute;
+						left: 0;
+						top: .05rem;
+						z-index: 99;
+						width: .7rem;
+						text-align: right;
+						white-space: nowrap;
+						font-size: .12rem;
+						a{
+							color: #333; font-weight: 700;
+						}
+						i{
+							margin-left: .05rem;
+						}
+					}
+					dd{
+						overflow: hidden;
+						padding: .05rem 0;
+						font-size: .12rem;
+						a{ 
+							color: #999;
+							float: left;
+							margin: .03rem 0;
+							padding: 0 .07rem;
+							height: .16rem;
+							line-height: .16rem;
+							white-space: nowrap;
+						}
+					}
+				}
+			}
+		}
+		
+	}
+	div.center{
+		width: calc(100% - 4rem);
+		float: left;
+		margin-right: 0.1rem;
+		.swiper-1{
+			width: 5.9rem;
+			height: 100%;
+			margin-right: 0.1rem;
+			position: relative;
+			img{
+				width: 100%;height: 100%;
+			}
+			.swiper-dots{
+				position: absolute;
+				z-index: 99;
+				bottom: .2rem;
+				left: .2rem;
+				width: 100%;
+				.swiper-pagination-bullet{
+					background: #FFFFFF;
+					margin-left: .05rem;
+					opacity: 0.4;
+				}
+				.swiper-pagination-bullet-active{
+					opacity: 1;
+					background: #FFFFFF;
+				}
+			}
+			.swiper-prev-1, .swiper-next-1{
+				opacity: .4;
+				&:hover{
+					opacity: .7;
+				}
+			}
+		}
+		.swiper-2{
+			width: 1.9rem;
+			height: 100%;
+			position: relative;
+			.item{
+				width: 1.9rem;
+				height: 1.5rem;
+				img{
+					width: 100%; height: 100%;
+				}
+			}
+			.item:nth-child(1), .item:nth-child(2) {
+				margin-bottom: 0.1rem;
+			}
+			.swiper-prev-2, .swiper-next-2{
+				display: none;
+			}
+			&:hover{
+				.swiper-prev-2, .swiper-next-2{
+					display: block;
+				}
+			}
+		}
+		.swiper-prev-1, .swiper-next-1, .swiper-prev-2, .swiper-next-2{
+			position: absolute;
+			top: 50%;
+			z-index: 99;
+			width: .3rem;
+			height: .3rem;
+			line-height: .3rem;
+			text-align: center;
+			background: #000000;
+			opacity: .2;
+			color: #FFFFFF;
+		}
+		.swiper-prev-1, .swiper-prev-2{
+			left: 0;
+			border-top-right-radius: .25rem;
+			border-bottom-right-radius: .25rem;
+			&:hover{
+				opacity: .4;
+			}
+		}
+		.swiper-next-1, .swiper-next-2{
+			right: 0;
+			border-top-left-radius: .25rem;
+			border-bottom-left-radius: .25rem;
+			&:hover{
+				opacity: .4;
+			}
+		}
+	}
+	div.right{
+		width: 1.9rem;
+		float: right;
+		background-color: #FFFFFF;
+		.login-tip{
+			padding: .15rem .19rem;
+			.info-content{
+				height: .5rem;
+				.logo{
+					width: .4rem;
+					height: .4rem;
+					border-radius: 100%;
+					float: left;
+				}
+				.info{
+					float: left;
+					font-size: .12rem;
+					margin-left: .1rem;
+					div:nth-child(2){
+						margin-top: .04rem;
+						span:first-child, span:last-child{
+							cursor: pointer;
+						}
+					}
+				}
+			}
+			.btn-content{
+				div:nth-child(1){
+					background-color: @text-color-hover;
+					color: #FFFFFF;
+				}
+				div:nth-child(2){
+					background-color: #363634;
+					color: #E5D790;
+				}
+				div:nth-child(1), div:nth-child(2){
+					width: 48%;
+					height: .24rem;
+					line-height: .24rem;
+					text-align: center;
+					border-radius: .15rem;
+					font-size: .13rem;
+					&:hover{
+						background-color: #C81623;
+						color: #FFFFFF;
+						span:hover{
+							cursor: pointer;
+						}
+					}
+				}
+			}
+		}
+		.day-report{
+			margin-top: .15rem;
+			padding: .15rem .12rem;
+			.title{
+				span{
+					cursor: pointer;
+				}
+			}
+			.report-content{
+				width: 100%;
+				margin-top: .1rem;
+				&>div.item{
+					margin-bottom: .05rem;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					cursor: pointer;
+					&>span.text-hover{
+						font-size: .13rem;
+						background-color: #FDEEED;
+						padding: .02rem .03rem;
+					}
+				}
+			}
+		}
+		.func-type{
+			ul{
+				width: 100%
+			}
+			li{
+				width: .60rem;
+				height: .55rem;
+				text-align: center;
+				display: inline-block;
+				div.img-link,img{
+					width: .28rem;height: .28rem;
+				}
+				div.img-link{
+					width: 100%; text-align: center;
+					&:hover{
+						img.img-default{ display: none; }
+						img.img-hover{ display: inline; }
+					}
+					img.img-hover{ display: none; }
+				}
+				div:nth-child(2){
+					font-size: .12rem;
+					color: #333333;
+				}
+			}
+		}
+	}
+}

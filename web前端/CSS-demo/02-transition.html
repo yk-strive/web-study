@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transition</title>
+</head>
+<style>
+	.test{
+		width: 100px;
+		height: 500px;
+		background-color: pink;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	.abs {
+		position: absolute;
+		top: 0;
+		left: 100px;
+		height: 100%;
+		width: 0;
+		transition: all 1s ease-in-out 0s;
+	}
+	.test:hover .abs {
+		width: 700px;
+		background-color: yellow;
+	}
+</style>
+<body>
+	<div class="test">
+		<div class="abs"></div>
+	</div>
+</body>
+</html>

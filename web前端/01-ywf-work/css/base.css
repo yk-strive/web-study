@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style-type: none;
+}
+div,
+li {
+    box-sizing: border-box;
+}
+
+
+
+
+.common-w {
+    width:  1000px;
+    margin: 0 auto;
+}
+/**每一段 title样式开始*/
+div.title p:first-child {
+    font-weight: bolder;
+    font-size: 20px;
+    color: #333333;
+} 
+div.title p:first-child span{
+    padding: 0 50px 8px;
+    background: url('../images/wap_line.jpg') no-repeat;
+    background-position: bottom;
+    background-size: 100% 2px;
+    position: relative;
+}
+div.title p:first-child span::before {
+    content: '';
+    width: 40px;
+    height: 2px;
+    background-color: #333333;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%);
+}
+div.title p:last-child {
+    padding-top: 20px;
+    font-size: 12px;
+    color: #555555;
+}
+/**每一段 title样式结束*/

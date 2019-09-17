@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>清除浮动</title>
+	<link rel="stylesheet" href="../normalize.css">
+</head>
+<style>
+
+	.content,
+	.footer {
+		width: 1200px;
+		margin: 0 auto;
+	}
+	.content {
+		/*overflow: hidden;*/ /*二*/
+	}
+	.left { 
+		float: left;
+		width: 580px;
+		background-color: #98F;
+	}
+	.right {
+		float: right;
+		width: 600px;
+		background-color: #FF00FF;
+	}
+	.left,
+	.right {
+		height: 300px;
+	}
+
+	.footer{
+		background-color: yellow;
+		height: 400px;
+	}
+	.clear{ /*一*/
+		clear: both;
+	}
+	.clearfix:after { /*三*/
+		content: 'yk';
+		display: block;
+		visibility: hidden;
+		height: 0;
+		clear: both;
+	}
+	.clearfix {
+		*zoom: 1; /*IE6, 7	清除浮动*/
+	}
+
+	.clearfix1:before, .clearfix1:after {
+		content: '';
+		display: table;
+	}
+	.c00learfix1:after {
+		clear: both;
+	}
+	.clearfix1 {
+		*zoom: 1;
+	}
+</style>
+<body>
+	<div class="content clearfix1">
+		<div class="left">左边</div>
+		<div class="right">右边</div>
+		<!-- <div class="clear"></div> --> <!--一-->
+	</div>
+	<div class="footer">
+		底部
+	</div>
+</body>
+</html>

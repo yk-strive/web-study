@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>开门大吉DEMO-两面翻转DEML</title>
+</head>
+<style>
+    .wrap {
+        width: 400px;
+        height: 500px;
+        border: solid pink 2px;
+        margin: 100px auto;
+        background: url('img/ywf-1.jpg') no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        perspective: 800px;
+    }
+    .wrap:hover .door_l {
+        transform: rotateY(-125deg);
+    }
+    .wrap:hover .door_r {
+        transform: rotateY(125deg);
+    }
+    .door_l, .door_r {
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        background: url('img/00.jpg') repeat-y;
+        background-size: 100% 50%;
+        transition: all 2s;
+    }
+    .door_l {
+        left: 0;
+        background-color: pink;
+        transform-origin: left; 
+    }
+    .door_r {
+        right: 0;
+        background-color: red;
+        transform-origin: right;
+    }
+
+    .wrap-2 {
+        margin: 50px auto;
+        width: 1000px;
+        height: 300px;
+        background-color: wheat;
+    }
+    .wrap-2 div {
+        text-align: center;
+        position: relative;
+        perspective: 800px;
+    }
+    .wrap-2 div img {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translate(-50%);
+        width: 200px;
+        height: 200px;
+        border-radius: 100%;
+        transition: all 3s;
+    }
+    .wrap-2 div img:first-child {
+        z-index: 1;
+        backface-visibility: hidden;
+    }
+    .wrap-2 div:hover img {
+        transform: translate(-50%) rotateY(180deg);
+    }
+</style>
+<body>
+    <section class="wrap">
+        <div class="door_l"></div>
+        <div class="door_r"></div>
+    </section>
+    <section class="wrap-2">
+        <div>
+            <img src="img/00.jpg" alt="">
+            <img src="img/ywf-2.jpg" alt="">
+        </div>
+    </section>
+</body>
+</html>

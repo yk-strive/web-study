@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>旋转轮播DEMO</title>
+</head>
+<style>
+    /**
+        核心知识点
+            transform-style: preserve-3d; 声明父元素中的的子元素定位于三维空间, 看着立体
+            perspective: 1000px; 视觉效果-远小近大
+            translateZ(400px); Z轴正方向平移400px
+    */
+    body {
+        perspective: 1000px;  /*视觉效果-远小近大*/
+    }
+    section {
+        width: 300px;
+        height: 300px;
+        margin: 200px auto;
+        position: relative;
+        background: url('img/ywf-1.jpg') no-repeat;
+        background-size: cover;
+        transform-style: preserve-3d; /**声明子元素定位于三维空间, 看着立体*/
+        animation: run 10s linear infinite;
+    }
+    div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%; 
+        height: 100%;
+        background: url('img/ywf-2.jpg') no-repeat;
+        background-size: cover;
+    }
+    section div:nth-child(1) {
+        transform: rotateY(0deg) translateZ(400px);
+    }
+    section div:nth-child(2) {
+        transform:  rotateY(60deg) translateZ(400px);
+    }
+    section div:nth-child(3) {
+        transform:  rotateY(120deg) translateZ(400px);
+    }
+    section div:nth-child(4) {
+        transform:  rotateY(180deg) translateZ(400px);
+    }
+    section div:nth-child(5) {
+        transform:  rotateY(240deg) translateZ(400px);
+    }
+    section div:nth-child(6) {
+        transform:  rotateY(300deg) translateZ(400px);
+    }
+    @keyframes run {
+        from {
+            transform: rotateY(0)
+        }
+        to {
+            transform: rotateY(360deg)
+        }
+    }
+</style>
+<body>
+    <section>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </section>
+</body>
+</html>

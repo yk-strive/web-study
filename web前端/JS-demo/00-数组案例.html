@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组案例</title>
+</head>
+<script>
+    var tempArray = [1, 2, 3, 4, 5, 95, 96, 97, 98, 99, 6, 94, 7, 93];
+    // 求一组数中的所有数的和和平均值
+    function test1(array) {
+        var sum = 0, avg = 0;
+        for(var i = 0; i < array.length; i++) {
+            sum += array[i];
+        }
+        avg = sum / array.length;
+        return {
+            sum: sum,
+            avg: avg
+        }
+    }
+    let test1Value = test1(tempArray);
+
+    // 求一组数中的最大值和最小值，以及所在位置  假设法
+    function test2(array) {
+        var max = array[0];
+        var maxIndex = 0;
+        var min = array[0];
+        var minIndex = 0;
+        for(var i = 0; i < array.length; i++) {
+            if (max < array[i]) {
+                max = array[i];
+                maxIndex = i;
+            }
+            if (min > array[i]) {
+                min = array[i];
+                minIndex = i;
+            }
+        }
+        return {
+            maxValue: max,
+            maxIndex: maxIndex,
+            minValue: min,
+            minIndex: minIndex
+        }
+    }
+    let test2Value = test2(tempArray);
+
+    // 将字符串数组用|或其他符号分割
+    function test3(array, strSprit) {
+        return array.join(strSprit);
+    }
+    let test3Value = test3(tempArray, '|');
+
+    // 翻转数组
+    function test4(array) {
+        var temp = [], index = 0;
+        for(var i = array.length - 1; i >= 0; i--) {
+            //temp[index] = array[i];
+            //index++;
+            temp[temp.length] = array[i];
+        }
+        return {
+            reversalValue: temp
+        }
+    }
+    let test4Value = test4(tempArray);
+
+    // 冒泡排序，从小到大
+    function test5(array) {  //array 长度14
+        var outNum = 0;
+        var inNum = 0;
+        var isSort = true; //是否排序排好了.  如果内层循环中, if语句执行,说明排序还在进行, 否则说明排序好了, 那么在外层循环进行退出
+        for(var i = 0; i < array.length - 1; i++) {  // 外层循环控制趟数
+            isSort = true;
+            outNum++;
+            /**
+                array.length - 1 循环趟数;  
+                第一次: 两两比较,所以只要循环 13趟, 就能找出最大的的值,将其放到末尾 -- array.length - 1 = 14
+                第二次: 因为第一次已经找出了最大值并且放到数组的末尾, 所以第二次时, 末尾的值不参与比较, 所以按照 
+                        还是两两比较, 循环 12趟, 找出第二个大值, 放到倒数第二的位置 -- array.length - 1 = 13
+            */
+            for(var j = 0; j < array.length - 1 - i; j++) { // 内层循环控制比较次数
+            /**
+                j初始为0, 是因为 每一趟开始比较时, 都是从头开始的. 
+                array.length - 1 - i 这里减i, 就是为了控制比较的次数, 每一次都会找出一个最大值, 最大值在下一次可以不参与比较
+            */
+                inNum++;
+                if (array[j] > array[j+1]) {
+                    array[j] = array[j] + array[j+1];
+                    array[j+1] = array[j] - array[j+1];
+                    array[j] = array[j] - array[j+1];
+                    isSort = false;
+                }
+            }
+            if (isSort) {
+                break;
+            }
+        }
+        return {
+            bubbleSortV: array,
+            outNum: outNum,
+            inNum: inNum
+        }
+    }
+    var tempA = [1, 2, 3, 5, 7, 4, 8, 9, 10]
+    let test5Value = test5(tempA);
+</script>
+<body>
+    
+</body>
+</html>

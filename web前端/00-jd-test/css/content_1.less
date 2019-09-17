@@ -1,0 +1,95 @@
+@import 'common.less';
+span.icon-arrow-down{
+	font-size: 0.03rem;
+}
+#content_1{
+	background-color: #E3E4E5;
+	.content-box{
+		height: .3rem;
+	}
+}
+
+#content_1 .content-box .content{
+	width: 100%;
+	line-height: .3rem;
+	li.local, li.right{
+		display: inline-block;
+		cursor: pointer;
+		vertical-align: top;
+	}
+	li.local{
+		padding: 0 .1rem;
+		position: relative;
+		&:hover{
+			background-color: #FFFFFF;
+			div.local-info{
+				display: block;
+			}
+		}
+		div.local-info{
+			display: none;
+			position: absolute;
+			left: 0;
+			top: .3rem;
+			z-index: 99;
+			background-color: #FFFFFF;
+			padding: .1rem 0;
+			box-shadow: 0.02rem 0.02rem 0.02rem 0.02rem #EAEAEA;
+			.rows{
+				white-space: nowrap;
+				.item{
+					padding: 0.05rem 0.1rem;
+					&:hover{
+						color: @text-color-hover;
+					}
+				}
+			}
+		}
+	}
+	li.right{
+		float: right;
+		ul>li{
+			display: inline-block;
+			vertical-align: top;
+			margin-left: 0.05rem;
+			padding: 0 0.05rem;
+			position: relative;
+			&.change-text-color:hover{
+				span{
+					color: @text-color-hover;
+				}
+			}
+			&.change-bg-color:hover{
+				background-color: #FFFFFF;
+			}
+			&>div.abs{
+				display: none;
+				position: absolute;
+				top: 0.3rem;
+				z-index: 99;
+				background-color: #FFFFFF;
+				white-space: nowrap;
+				box-shadow: 0.02rem 0.02rem 0.02rem 0.02rem #EAEAEA;
+				.rows{
+					padding: 0 0.05rem;
+					color: #999;
+					span:hover{
+						color: @text-color-hover;
+					}
+				}
+			}
+			&:nth-child(3):hover, &:nth-child(5):hover{
+				div.abs{
+					display: block;
+					left: 0;
+				}
+			}
+			&:nth-child(6):hover, &:nth-child(7):hover{
+				div.abs{
+					display: block;
+					right: 0;
+				}
+			}
+		}
+	}
+}

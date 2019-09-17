@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>渐变DEMO</title>
+</head>
+<style>
+    div.wrap {
+        width: 1000px;
+        height: 100px;
+        margin: 100px auto;
+    }
+    div.wrap1 { /*线性-默认方向*/
+        background: -webkit-linear-gradient(pink, yellow 10%, red 60%);
+        background: linear-gradient(pink, yellow 10%, red 60%);
+    }
+    div.wrap2 {
+        background: -webkit-linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+        background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+    }
+    div.wrap3 {
+        background: -webkit-linear-gradient(left top, pink, yellow, red);
+        background: linear-gradient(to bottom right, pink, yellow, red);
+    }
+    div.wrap4 {
+        background: -webkit-linear-gradient(100deg, pink, yellow, red);
+        background: linear-gradient(100deg, pink, yellow, red);
+    }
+    body {
+        background: -webkit-radial-gradient(50% 50%, circle closest-corner, rgba(0, 0, 0, 0) 10%, rgb(34, 38, 41) 90%);
+        background: radial-gradient(50% 50%, circle closest-corner, rgba(0, 0, 0, 0) 10%, rgb(34, 38, 41) 90%);
+    }
+</style>
+<body>
+    <div class="wrap wrap1">线性渐变-默认方向-上到下</div> 
+    <div class="wrap wrap2">线性渐变-左到右</div> 
+    <div class="wrap wrap3">线性渐变-对角-左上到右下</div> 
+    <div class="wrap wrap4">线性渐变-角度</div> 
+</body>
+</html>

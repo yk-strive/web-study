@@ -1,0 +1,90 @@
+@import 'common.less';
+#content_2{
+	padding: 0.05rem 0;
+	background-color: #FFFFFF;
+	border-bottom: 0.01rem solid #EAEAEA;
+}
+#content_2 .content-box .content{
+	width: 100%;
+	.logo{
+		width: 2rem;
+		height: 1.2rem;
+		background-image: url('https://misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/sprite/header/sprite.png');
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		overflow: hidden;
+		vertical-align: top;
+		display: inline-block;
+	}
+	div.center{
+		width: calc(100% - 2.2rem);
+		display: inline-block;
+		vertical-align: top;
+		div.search{
+			margin: 0.14rem 0 0 0.35rem;
+			font-size: 0;
+			div{
+				display: inline-block;
+				height: 0.3rem;
+				line-height: 0.3rem;
+				vertical-align: top;
+			}
+			div.input-search{
+				position: relative;
+				input{
+					border: 0.02rem solid @text-color-hover;
+					height: 0.4rem;
+					line-height: 0.4rem;
+					width: 5.4rem;
+					padding-left: 0.1rem;
+				}
+				span.icon-camera{
+					position: absolute;
+					right: 0.15rem;
+					top: .03rem;
+					font-size: 0.25rem;
+					color: #666;
+				}
+			}
+			div.icon--search{
+				background-color: @text-color-hover;
+				color: #FFFFFF;
+				text-align: center;
+				width: 0.5rem;
+				height: 0.4rem;
+				line-height: 0.4rem;
+				span{
+					font-size: 0.2rem;
+				}
+			}
+		}
+		div.day-type{
+			margin: 0.05rem 0 0 0.35rem;
+			span{
+				margin-right: 0.05rem;
+				cursor: pointer;
+			}
+			span.text-default{
+				&:hover{
+					color: @text-color-hover;
+				}
+			}
+		}
+		div.fine-work-type{
+			margin-top: 0.2rem;
+			span{
+				font-size: 0.14rem;
+				margin-right: 0.15rem;
+				cursor: pointer;
+			}
+			span.text-hover{
+				font-weight: bolder;
+			}
+			span{
+				&:hover{
+					color: @text-color-hover;
+				}
+			}
+		}
+	}
+}
