@@ -17,7 +17,16 @@ li {
     width:  1000px;
     margin: 0 auto;
 }
+.content-box {
+    min-height: 410px;
+    width: 100%;
+}
 /**每一段 title样式开始*/
+div.title {
+    text-align: center;
+    padding-top: 30px;
+    overflow: hidden;
+} 
 div.title p:first-child {
     font-weight: bolder;
     font-size: 20px;

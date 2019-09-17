@@ -26,12 +26,5 @@
 }
 #wrap_1 div.tabs-to-content{
     background: url('../images/case_bg.jpg') no-repeat;
-    background-size: cover;
-    height: 410px;
-    width: 100%;
+    background-size: cover
 }
-#wrap_1 div.title {
-    text-align: center;
-    padding-top: 30px;
-    overflow: hidden;
-} 

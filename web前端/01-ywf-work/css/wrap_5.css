@@ -1,0 +1,20 @@
+section#wrap_5 {
+    width: 100%;
+    min-height: 318px;
+    background: url('../images/web_c_banner.jpg') no-repeat;
+    background-size: contain;
+    background-position: center
+}
+#wrap_5 div.desc {
+    text-align: center;
+    color: #FFFFFF;
+    padding-top: 80px;
+}
+#wrap_5 div.desc p:first-child {
+    font-size: 36px;
+    font-weight: bolder;
+}
+#wrap_5 div.desc p:last-child {
+    font-size: 12px;
+    padding-top: 30px;
+}
