@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Work</title>
+</head>
+<style>
+    input {
+        width: 300px;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 10px;
+        border: 1px solid pink;
+        border-radius: 5px;
+    }
+    button {
+        width: 300px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background-color: lightgreen;
+        color: #333;
+        border: none;
+        border-radius: 5px;
+    }
+</style>
+<body>
+    <h4>请输入任意年份, 查看是平年还是闰年</h4>
+    <input id="input-year" type="text" placeholder="输入年份-如: 2019. 输入完毕点击空白处显示答案" onblur="checkUpYear()">
+    <br><br>
+    <h4>1-100之间所有偶数之和, 以及所有奇数的和</h4>
+    <button onclick="getTotalNumer()">点击获取答案</button>
+    <br><br>
+    <h4>输入一个正整数, 显示这个正整数 各个位数之和</h4>
+    <input id="input-number" type="text" placeholder="输入正整数-如: 20. 输入完毕点击空白处显示答案" onblur="getNumber1()">
+    <br><br>
+    <h4>今天你有认真学习吗?</h4>
+    <button onclick="isStudy()">点击开始询问</button>
+    <br><br>
+
+    <h4>去除数组中的指定值</h4>
+    <button onclick="removeHandle()">点击去除</button>
+    <br><br>
+
+    <h4>两个数组中的差异值</h4>
+    <button onclick="removeHandle2()">点击实现</button>
+    <br><br>
+</body>
+<script>
+    //获取DOM
+    function _getElementById(id) {
+        return document.getElementById(id);
+    }
+    // 平年闰年判断
+    function checkUpYear() {
+        /**
+        闰年
+            能被4整除但不能被100整除的年份为普通闰年
+            能被400整除的为世纪闰年
+        平年
+            除了闰年以外的年份都是平年
+        */
+        var inputYear = _getElementById('input-year').value;
+        if (inputYear && inputYear.length == 4) {
+            if ((inputYear % 4 === 0 && inputYear % 100 !== 0) || (inputYear % 400 === 0)) {
+                alert('闰年')
+            } else {
+                alert('平年')
+            }
+        } else {
+            alert('请检查输入格式')
+        }
+    }
+
+    // 1-100 偶数之和,奇数之和
+    function getTotalNumer() {
+        var odd = 0; // 奇数初始变量    奇数: 不能除尽2的，
+        var even = 0; // 偶数初始变量   偶数: 2的倍数
+        for (var i = 1; i <= 100; i++) {
+            if (i % 2 != 0) {
+                odd = odd + i;
+            } else {
+                even = even + i;
+            }
+        }
+        alert('奇数之和----' + odd + ', 偶数之和----' + even);
+    }
+
+    //求一个正整数 各个位数之和
+    function getNumber1 () {
+        var inputNumber = _getElementById('input-number').value;
+        var numLength = inputNumber.length; // 输入长度
+        var sum = 0; 
+        for(var i = 0; i< numLength; i++) {
+            var temp_1 = parseInt(inputNumber % 10);  // 求余数
+            var temp_2 = inputNumber / 10;  // 求商
+            inputNumber = temp_2;
+            sum = sum + temp_1;
+        }
+        alert('各个位数之和----' + sum);
+    }
+
+    function isStudy() {
+        var p = '';
+        do {
+            p = window.prompt('今天你认真学习了吗');
+            if (p === 'yes') {
+                alert('good');
+            }
+        } 
+        while (p == 'no');
+    }
+
+
+    // 去除数组中的指定值
+    var array = [1, 10, 20, 30, 50, 60]
+    function removeHandle(removeArr) {
+        removeArr = [10, 30];
+        var temp = [];
+        for (var i = 0; i < array.length; i++) {
+            if (removeArr.indexOf(array[i])== -1) {
+                temp.push(array[i]);
+            }
+        }
+        console.log(temp)
+    }
+    // 两个数组的差异值
+    function removeHandle2() {
+        var arr1 = [1,2,3,4];
+        var arr2 = [1,4,5,6,7];
+        var temp = []; var t_index = 0;
+        for (var i = 0; i < arr1.length; i++) {
+            var flag = false;
+            for (var j = 0; j < arr2.length; j++) {
+                if (arr1[i] == arr2[j]) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag) {
+                temp[t_index] = arr1[i];
+                t_index += 1;
+            }
+        }
+        for (var i = 0; i < arr2.length; i++) {
+            var flag = false;
+            for (var j = 0; j < arr1.length; j++) {
+                if (arr2[i] == arr1[j]) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag) {
+                temp[t_index] = arr2[i];
+                t_index += 1;
+            }
+        }
+        console.log(temp)
+
+        // for (var i = 0; i < arr1.length; i++) {
+        //     if (arr2.indexOf(arr1[i])== -1) {
+        //         temp.push(arr1[i]);
+        //     }
+        // }
+        // for (var j = 0; j < arr2.length; j++) {
+        //     if (arr1.indexOf(arr2[j])== -1) {
+        //         temp.push(arr2[j]);
+        //     }
+        // }
+        // console.log(temp)
+    }
+</script>
+</html>
