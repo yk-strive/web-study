@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>预解析demo</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var a = 20;
+		function abc() {
+			alert(a);
+			var a = 10;
+		}
+		abc();
+		console.log(a);
+		function a() {
+			console.log('aaaa');
+		}
+		var a = 1;
+		console.log(a);
+	</script>
+</html>
