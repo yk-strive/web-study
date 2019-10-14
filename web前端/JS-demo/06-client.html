@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>client</title>
+</head> 
+<style>
+    * {
+        margin: 0;
+    }
+    #box {
+        width: 100px;
+        height: 100px;
+        border: 10px solid red;
+        margin: 50px;
+        padding: 20px;
+        background-color: #98f;
+    }
+</style>
+<body>
+    <div id="box"></div>
+    <div id="desc">
+        <h4>client</h4>
+        <ul>
+            <li>cilentLeft, clientTop, 获取的是元素的边框大小</li>
+            <li>clientWidth, clientHeight, 获取的是元素的宽高,包含padding</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var box = document.getElementById('box');
+    console.log('box-clientLeft', box.clientLeft);  // 10
+    console.log('box-clientTop', box.clientTop);    // 10
+
+    console.log('box-clientWidth', box.clientWidth); // 140
+    console.log('box-clientHeight', box.clientHeight); // 140
+</script>
+</html>

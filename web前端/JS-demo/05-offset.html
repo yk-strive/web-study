@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>offset</title>
+</head>
+<style>
+    * {
+        margin: 0;
+    }
+    #box {
+        width: 200px;
+        height: 200px;
+        background-color: brown;
+        margin-left: 50px;
+        margin-top: 50px;
+        overflow: hidden;
+    }
+    #child {
+        width: 80px;
+        height: 80px;
+        background-color: chartreuse;
+        border: 10px solid #98f;
+        margin-left: 50px;
+        margin-top: 50px;
+        padding-left: 10px;
+        padding-top: 10px;
+        box-sizing: content-box;
+    }
+</style>
+<body>
+    <div id="box">
+        <div id="child"></div>
+    </div>
+
+    <div id="desc">
+        <h4>offset</h4>
+        <ul>
+            <li>offset获取的left与top(即offsetLeft, offsetTop) 是相对于它的<strong>offsetParent</strong>的偏移量</li>
+            <li>offsetParent -- 获取距离当前元素最近的<strong>定位父元素</strong>, 没有定位父元素,则获取的是 body</li>
+            <li>offsetWidth, offsetHeight 获取元素的宽高. box-sizing为border-box, 获取的是元素的宽高; 为content-box时, 宽高则包含border与padding</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var box = document.getElementById('box');
+    // 获取box 的定位父元素
+    console.log('box-offsetParent', box.offsetParent);
+    // 获取box的top与left
+    console.log('box-top', box.offsetTop);  // 50
+    console.log('box-left', box.offsetLeft); // 50
+    // 获取box的width与height
+    console.log('box-width', box.offsetWidth); // 200
+    console.log('box-height', box.offsetHeight); // 200
+
+    var child = document.getElementById('child');
+    // 获取child 的定位父元素
+    console.log('获取child-offsetParent', child.offsetParent);
+    // 获取child的top与left
+    console.log('child-top', child.offsetTop);   // 100
+    console.log('child-left', child.offsetLeft); // 100
+    // 获取child的width与height
+    console.log('child-width', child.offsetWidth);  // 100
+    console.log('child-height', child.offsetHeight); // 100
+</script>
+</html>
