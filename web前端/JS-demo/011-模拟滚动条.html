@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模拟滚动条</title>
+</head>
+<style>
+    * {
+        margin: 0;
+    }
+    body {
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+    }
+    #box {
+        width: 200px;
+        height: 500px;
+        margin: 20px auto;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid #999999;
+        box-sizing: border-box;
+    }
+    #scroll {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 10;
+        width: 10px;
+        height: 500px;
+        background-color: rgba(255, 160, 122, .2);
+    }
+    #bar {
+        position: absolute;
+        z-index: 11;
+        width: 10px;
+        border-radius: 5px;
+        background-color: coral;
+    }
+    #content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: auto;
+        box-sizing: border-box;
+        padding: 6px 8px;
+        line-height: 24px;
+    }
+</style>
+<body>
+    <div id="box">
+        <div id="content">
+            国无防不立，民无防不安。我们的国防是全民国防，加强全民国防教育，巩固军政军民团结，就能为实现中国梦强军梦凝聚起强大力量。
+            作为国家软实力的重要体现，强烈的国防观念和国防意识是每个国民必备的素质，也是应尽的职责，更是一道看不见的坚固屏障。
+            新时代，我们要建设同国际地位相称、同国家安全和发展利益相适应的巩固国防和强大军队，必须下大气力推动国防教育向深处走向实里落。
+
+            在牢记历史中夯实国防观念。
+            近代以来,中华民族走向复兴的历史进程多次被打断，一步步沦为半殖民地半封建社会，山河破碎、生灵涂炭，悲惨的屈辱史一次次警醒世人落后就要挨打！
+            没有一个主权独立的国家就没有人民的生存权与发展权，没有一个巩固强大的国防就没有人民的和平安康生活。
+            124年前甲午兵败后，李鸿章曾哀求日本首相伊藤博文：赔款数额能否再减些？对方回绝：无可再减！
+            任何的乞求在侵略者的铁蹄面前只会激发起他们愈加贪婪的欲念。九一八事变后，300万东北人民陷入颠沛流离的悲惨境地，
+            南京大屠杀几十万同胞遇难。
+            在民族危亡时刻，只有中国共产党人挽狂澜于既倒，带领各族人民英勇斗争，推翻三座大山、打败日本侵略者，并经历了解放战争、抗美援朝战争等艰苦卓绝考验，中华民族在精神上才真正站立起来。昭昭前事，惕惕后人。
+            今天，我们前所未有地走近世界舞台中央，但“四大危险”“四大考验”将长期存在，站在新的历史起点上，我们还要进行具有许多新的历史特点的伟大斗争，要赢得胜利、赢得未来，必须牢记历史，勿忘国耻，勠力同心建设好国防。
+                
+            从家国情怀中增强国防责任。今天，中国已成为全球第二大经济体、第一大贸易国、第一大外汇储备国，对世界经济增长的贡献率达30%。
+            百年沧桑，中国之巨变，体现在综合国力的跃升，体现在国际地位的彰显，也更需要建设同我国国际地位相称、同国家安全和发展利益相适应的巩固国防和强大军队。
+            应充分发挥好国防教育的“凝固剂”“清醒剂”作用，从点滴入手培铸好国民的责任感、危机感和自豪感。强化国民的担当意识，使全体国民自觉将个人前途与国家、民族命运紧紧联系在一起，紧盯建设世界一流军队这个战略目标，增强追赶时代、领跑潮流的意志。
+            国无防不立，民无防不安。我们的国防是全民国防，加强全民国防教育，巩固军政军民团结，就能为实现中国梦强军梦凝聚起强大力量。
+            作为国家软实力的重要体现，强烈的国防观念和国防意识是每个国民必备的素质，也是应尽的职责，更是一道看不见的坚固屏障。
+            新时代，我们要建设同国际地位相称、同国家安全和发展利益相适应的巩固国防和强大军队，必须下大气力推动国防教育向深处走向实里落。
+
+            在牢记历史中夯实国防观念。
+            近代以来,中华民族走向复兴的历史进程多次被打断，一步步沦为半殖民地半封建社会，山河破碎、生灵涂炭，悲惨的屈辱史一次次警醒世人落后就要挨打！
+            没有一个主权独立的国家就没有人民的生存权与发展权，没有一个巩固强大的国防就没有人民的和平安康生活。
+            124年前甲午兵败后，李鸿章曾哀求日本首相伊藤博文：赔款数额能否再减些？对方回绝：无可再减！
+            任何的乞求在侵略者的铁蹄面前只会激发起他们愈加贪婪的欲念。九一八事变后，300万东北人民陷入颠沛流离的悲惨境地，
+            南京大屠杀几十万同胞遇难。
+            在民族危亡时刻，只有中国共产党人挽狂澜于既倒，带领各族人民英勇斗争，推翻三座大山、打败日本侵略者，并经历了解放战争、抗美援朝战争等艰苦卓绝考验，中华民族在精神上才真正站立起来。昭昭前事，惕惕后人。
+            今天，我们前所未有地走近世界舞台中央，但“四大危险”“四大考验”将长期存在，站在新的历史起点上，我们还要进行具有许多新的历史特点的伟大斗争，要赢得胜利、赢得未来，必须牢记历史，勿忘国耻，勠力同心建设好国防。
+                
+            从家国情怀中增强国防责任。今天，中国已成为全球第二大经济体、第一大贸易国、第一大外汇储备国，对世界经济增长的贡献率达30%。
+            百年沧桑，中国之巨变，体现在综合国力的跃升，体现在国际地位的彰显，也更需要建设同我国国际地位相称、同国家安全和发展利益相适应的巩固国防和强大军队。
+            应充分发挥好国防教育的“凝固剂”“清醒剂”作用，从点滴入手培铸好国民的责任感、危机感和自豪感。强化国民的担当意识，使全体国民自觉将个人前途与国家、民族命运紧紧联系在一起，紧盯建设世界一流军队这个战略目标，增强追赶时代、领跑潮流的意志。
+        </div>
+        <div id="scroll">
+            <div id="bar"></div>
+        </div>
+    </div>
+</body>
+<script src="../common.js"></script>
+<script>
+    var box = document.getElementById('box');
+    var content = document.getElementById('content');
+    var scrollBox = document.getElementById('scroll');
+    var bar = document.getElementById('bar');
+
+    /**
+     * 处理滚动条的样式 - 是否显示, 高度
+    */
+    // clientHeight - 获取内容的高度
+    var contentClientHeight = content.clientHeight;
+    // 文本与box高度的比例;
+    var ratio;
+    if (contentClientHeight > box.offsetHeight) { 
+        scrollBox.style.display = 'block';  // 滚动条显示
+        content.style.width = box.offsetWidth - scrollBox.offsetWidth + 'px';  // 更改content的width
+        ratio = contentClientHeight / box.offsetHeight; // 求比例
+        bar.style.height = (box.offsetHeight - 20) / ratio + 'px';
+    }
+
+    scrollBox.onmousedown = function(e) {
+        e = e || window.event;
+        //鼠标进行移动时
+        document.onmousemove = function(e) {
+            // 滚动条的位置
+            var barY = getPage(e).pageY - box.offsetTop;
+            barY = barY - bar.offsetHeight / 2;
+            barY = barY < 0 ? 0 : barY;
+            barY = barY > box.offsetHeight - bar.offsetHeight ? box.offsetHeight - bar.offsetHeight : barY;
+            bar.style.top = barY + 'px';
+
+            // 滚动条移动的距离 / 滚动条最大移动的距离 = 内容移动的距离 / 内容最大移动的距离
+            var barMax = box.offsetHeight - bar.offsetHeight;
+            var contentMax = content.clientHeight - box.offsetHeight;
+            var contentY = barY / barMax * contentMax;
+            content.style.top = -contentY + 'px';
+        }
+    }
+    // 文档中鼠标抬起时, 移除鼠标移动事件
+    document.onmouseup = function() {
+        document.onmousemove = null;
+    }
+</script>
+</html>

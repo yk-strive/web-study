@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>放大镜</title>
+</head>
+<style>
+    * {
+        margin: 0;
+    }
+    #box {
+       width: 200px;
+       height: 200px;
+       position: relative; 
+       margin: 100px 50px;
+    }
+    .small img {
+        width: 100%;
+        height: 100%;
+    }
+    .small {
+        width: 200px;
+        height: 200px;
+        position: relative;
+    }
+    .small .mask {
+        width: 50px;
+        height: 50px;
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 9;
+        background: rgba(220, 20, 60, .6);
+    }
+    .big {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 210px;
+        width: 250px;
+        height: 250px;
+        z-index: 9;
+        overflow: hidden;
+    }
+    .big img {
+        position: absolute;
+    }
+</style>
+<body>
+    <div id="box">
+        <div class="small" id="small">
+            <img src="./img/small.webp" alt="">
+            <div class="mask" id="mask"></div>
+        </div>
+        <div class="big" id="big">
+            <img id="bigImg" src="./img/big.jpg" alt="">
+        </div>
+    </div>
+</body>
+<script src="../common.js"></script>
+<script>
+    var box = document.getElementById('box');
+    var boxWidth = box.offsetWidth;    //盒子宽度
+    var boxHeight = box.offsetHeight;  //盒子高度
+    
+    var small = document.getElementById('small');
+    var big = document.getElementById('big');
+    var bigImg = document.getElementById('bigImg');
+    var mask = document.getElementById('mask');
+    var maskWidth, maskHeight;  //遮罩宽高
+
+    // 鼠标进入, 遮罩,大图 显示; 鼠标离开, 遮罩,大图 隐藏
+    box.onmouseenter = function(e) {
+        mask.style.display = 'block';
+        big.style.display = 'block';
+        maskWidth = mask.offsetWidth;
+        maskHeight = mask.offsetHeight;
+    }
+    box.onmouseleave = function() {
+        mask.style.display = 'none';
+        big.style.display = 'none';
+        maskWidth = 0;
+        maskHeight = 0;
+    }
+    
+    box.onmousemove = function(e) {
+        e = e || window.event;
+        // 获取鼠标在box 中的位置, 更改遮罩的位置信息
+        var x = getPage(e).pageX - box.offsetLeft;
+        var y = getPage(e).pageY - box.offsetTop;
+        
+        // 鼠标在mask的中心点
+        x = x - maskWidth / 2;
+        y = y - maskHeight / 2;
+
+        //最小距离
+        x = x < 0 ? 0 : x;
+        y = y < 0 ? 0 : y;
+
+        //最大距离
+        x = x > boxWidth - maskWidth ? boxWidth - maskWidth : x;
+        y = y > boxHeight - maskHeight ? boxHeight - maskHeight : y;
+
+        mask.style.top = y + 'px';
+        mask.style.left = x + 'px';
+
+        /**
+         * 大图片处理
+         * 大图跟随移动的公式
+         *      mask移动的距离 / mask最大移动的距离 = 大图片移动的距离 / 大图片最大移动的距离
+        */
+       //  mask最大移动的距离
+       var maskMax = boxWidth - maskWidth;
+       // 大图片最大移动的距离
+       var bigImgMax = bigImg.offsetWidth - big.offsetWidth;
+       //大图片移动的距离
+       var bigImgX = x * bigImgMax / maskMax;
+       var bigImgY = y * bigImgMax / maskMax;
+
+       //设置大图片的top, left; 此时的bigImgX, bigImgY为正, 所以设置时,要设为负数,效果才可以
+       bigImg.style.left = -bigImgX + 'px';
+       bigImg.style.top = -bigImgY + 'px';
+    }
+</script>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>瀑布流</title>
+</head>
+<style>
+    * {
+        margin: 0;
+    }
+    #content {
+        width: 1200px;
+        min-height: 1000px;
+        margin: 100px auto;
+        position: relative;
+        box-sizing: border-box;
+        padding: 0 8px;
+        border: 1px solid coral;
+    }
+    .item {
+        position: absolute;
+        border: 1px solid #999999;
+    }
+</style>
+<body>
+    <div id="content">
+        <div class="item">
+            <img src="./img/P_000.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="./img/P_001.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="./img/P_002.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="./img/P_003.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="./img/P_004.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="./img/P_005.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="./img/P_006.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="./img/P_007.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="./img/P_008.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="./img/P_009.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="./img/P_010.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="./img/P_011.jpg" alt="">
+        </div>
+    </div>
+</body>
+<script>
+    window.onload = function() {
+        var contentPaddingLR = 8;
+        var content = document.getElementById('content');
+        var items = document.getElementsByClassName('item');
+        // 最大列数
+        var column = parseInt(content.offsetWidth / items[0].offsetWidth);
+        console.log(column);
+        // 每一列间距
+        var distence = (content.offsetWidth - items[0].offsetWidth * column - contentPaddingLR * 2) / (column - 1);
+        console.log(items[0].offsetWidth);
+        // 布局
+        var arr = [];
+        waterFull();
+
+
+        function waterFull() {
+            for (let i = 0; i < items.length; i++) {
+                if (i < column) {
+                    items[i].style.left = contentPaddingLR + (items[i].offsetWidth + distence) * i + 'px';
+                    arr[i] = items[i].offsetHeight;
+                    console.log(arr)
+                } else {
+                    var obj = getMin(arr);
+                    items[i].style.left = contentPaddingLR + (items[i].offsetWidth + distence) * obj.minI + 'px';
+                    items[i].style.top = obj.minV + distence + 'px';
+                    arr[obj.minI] = obj.minV + distence + items[i].offsetHeight;
+                    console.log('obj', obj);
+                    console.log(arr)
+                }
+            }
+        }
+        function getMin(arr) {
+            var obj = {};
+            obj.minV = arr[0];
+            obj.minI = 0;
+            for (var i = 1; i < arr.length; i++) {
+                if (obj.minV > arr[i]) {
+                    obj.minV = arr[i];
+                    obj.minI = i;
+                }
+            }
+            return obj;
+        }
+    }
+</script>
+</html>

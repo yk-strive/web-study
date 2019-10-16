@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>scroll</title>
+</head>
+<style>
+    #box {
+        width: 300px;
+        height: 300px;
+        background-color: aqua;
+        overflow: hidden;
+    }
+    #child {
+        width: 200px;
+        height: 100px;
+        overflow: auto;
+        background-color: blue;
+        margin: 50px;
+    }
+</style>
+<body>
+    <div id="box">
+        <div id="child">
+            由国家互联网信息办公室、科学技术部、工业和信息化部、浙江省人民政府共同主办的第六届世界互联网大会“互联网之光”博览会将于2019年10月18日至22日在浙江乌镇举行。
+            诚挚欢迎全国各地的互联网业界人士及社会大众前往乌镇现场参观。现将有关事项通知如下：
+            由国家互联网信息办公室、科学技术部、工业和信息化部、浙江省人民政府共同主办的第六届世界互联网大会“互联网之光”博览会将于2019年10月18日至22日在浙江乌镇举行。
+            诚挚欢迎全国各地的互联网业界人士及社会大众前往乌镇现场参观。现将有关事项通知如下：
+        </div>
+    </div>
+    <div>
+        <h4>scroll</h4>
+        <ul>
+            <li>scrollWidth, scrollHeight 获取的是<strong>内容</strong>的宽高</li>
+            <li>scrollLeft, scrollTop 获取的是<strong>内容</strong>滚动出去的距离</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var child = document.getElementById('child');
+    console.log(child.scrollWidth); // 
+    console.log(child.scrollHeight);
+    
+</script>
+</html>
