@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bind和call</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function test(x, y) {
+        console.log('test-this', this);
+        console.log(x + y);
+    }
+    var o = {
+        name: 'yk'
+    }
+    var b = {
+        age: 20
+    }
+    //bind - 改变函数的this指向, 并且返回一个新的函数, 不会去调用执行函数
+    var fn = test.bind(o, 1, 2);
+    fn();  // fn执行, 打印 test-this== {name: 'yk'}, x+y==3
+
+    // call - 改变函数的this执行, 并且会执行函数
+    test.call(b, 3, 4); // 执行, 打印 test-this== {age: 20}, x+y==7
+</script>
+</html>

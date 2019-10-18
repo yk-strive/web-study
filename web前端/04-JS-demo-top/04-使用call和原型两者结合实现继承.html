@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用call和原型两者结合实现JS继承</title>
+</head>
+<body>
+    <img src="./00-img/04-组合继承中实现对父类型方法的继承-老师讲解.png" alt="">
+    <img src="./00-img/04-组合继承中实现对父类型方法的继承.png" alt="">
+</body>
+<script>
+    /**
+     * call() -- 实现子类型对父类型中属性的继承
+     * 原型继承 -- 实现子类型对父类型中方法的继承
+     * 
+    */
+    // 父对象
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    Person.prototype.say = function(str) {
+        console.log('say-this', this);
+        console.log('say', str);
+    }
+
+    // 子对象
+    function Student(name, age, work) {
+        Person.call(this, name, age);  // 通过call实现父类型中的属性的继承
+        this.work = work;
+    }
+        // 将子类型的原型对象重置为 父类型的实例对象, 达到对父类型中方法的继承
+        /**
+         * 至于要用 new Person() 而不是用 Person.prototype
+         * Person.prototype 是一个对象, 对象在内存中存放在堆内存中, 在栈内存中会有这个对象的指针,
+         * 用 = Person.prototype的方式, 相当于指向这个对象的指针 又给了Student.prototype一份, 
+         * 导致 两者指向同一个 原型对象,  其中一个更改, 必然导致另一个也会更改, 
+         * */ 
+    Student.prototype = new Person();
+    Student.prototype.constrouctor = Student;
+    
+    Student.prototype.study = function() {
+        console.log('学习');
+    }
+
+    var s1 = new Student('小明', 14, '数学课代表');
+    console.log(s1);
+    s1.say('小明');
+    s1.study();
+    
+</script>
+</html>
