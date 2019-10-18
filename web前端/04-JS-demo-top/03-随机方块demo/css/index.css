@@ -1,0 +1,10 @@
+* {
+    margin: 0;
+}
+#content {
+    width: 800px;
+    height: 600px;
+    margin: 40px auto;
+    background-color: black;
+    position: relative;
+}
