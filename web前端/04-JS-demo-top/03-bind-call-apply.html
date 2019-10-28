@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>bind和call</title>
+    <title>bind和call和apply</title>
 </head>
 <body>
     
@@ -20,11 +20,17 @@
     var b = {
         age: 20
     }
+    var c = {
+        class: '二班'
+    }
     //bind - 改变函数的this指向, 并且返回一个新的函数, 不会去调用执行函数
     var fn = test.bind(o, 1, 2);
     fn();  // fn执行, 打印 test-this== {name: 'yk'}, x+y==3
 
     // call - 改变函数的this执行, 并且会执行函数
     test.call(b, 3, 4); // 执行, 打印 test-this== {age: 20}, x+y==7
+
+    // apply() - 改变函数的this并执行该函数, 且参数传递时为数组形式
+    test.apply(c, [2, 3]);
 </script>
 </html>

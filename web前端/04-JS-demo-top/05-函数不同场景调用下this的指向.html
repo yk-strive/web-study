@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数不同场景下调用,其this的指向</title>
+</head>
+<style>
+    div{
+        width: 100px;
+        height: 100px;
+        background-color: black
+    }
+</style>
+<body>
+    <div id="test"></div>
+</body>
+<script>
+    // 1. 普通函数调用
+    function test1() {
+        console.log('普通函数调用-this', this);   //this-Window
+    }
+    test1();
+
+    // 2. 对象方法调用
+    var obj = {
+        name: 'yk',
+        test2: function() {
+            console.log('对象方法调用-this', this);  // this-obj
+        }
+    }
+    obj.test2();
+
+    // 3. 作为构造函数
+
+    // 4. 作为事件处理函数
+    document.addEventListener('click', function(){
+        console.log('document绑定事件处理函数-this', this); // this -- document文档
+    }) 
+    var body = document.body;
+    body.addEventListener('click', function(e){
+        e = e || window.event;
+        //e.cancelBubble = true; IE兼容
+        e && e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+        console.log('body绑定事件处理函数-this', this);   // this -- body
+    }) 
+    var test = document.getElementById('test');
+    test.addEventListener('click', function(e){
+        e = e || window.event;
+        e && e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+        console.log('body绑定事件处理函数-this', this);   //this -- div
+    }) 
+
+    //5.作为定时器函数处理
+    setInterval(function() {
+        console.log('定时器函数处理-this', this);   //this -- window
+    }, 2000)
+</script>
+</html>
