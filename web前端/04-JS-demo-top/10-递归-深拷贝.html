@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>递归-深拷贝</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function deepHandle(obj) {
+		let tempObj = Array.isArray(obj) ? [] : {};
+		if (obj && typeof obj === 'object') {
+			for (var key in obj) {
+				if (obj.hasOwnProperty(key)) {
+					if (obj[key] && typeof obj[key] === 'objct') {
+						let type = Object.prototype.toString.call(obj[key]).slice(8, -1); //具体对象类型
+						//Date 与 RegExp 不处理的话, 拷贝之后会成 {}, 
+						if (type === 'Date') {
+							tempObj[key] = new Date(obj[key]);
+						} else if (type === 'RegExp') {
+							tempObj[key] = new RegExp(obj[key]);
+						} else {
+							tempObj[key] = deepHandle(obj[key]);
+						}
+					} else {
+						tempObj[key] = obj[key];
+					}
+				}
+			}
+		}
+		return tempObj
+	}
+</script>
+</html>

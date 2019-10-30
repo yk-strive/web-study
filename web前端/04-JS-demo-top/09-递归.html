@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>递归</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// 求1 - n 之间的和
+	/**
+		n = 3    3+getNum(3-1)
+		n = 2    2+getNum(2-1)
+		n = 1    1
+	*/
+	function getNum(n) {
+		if (n === 1) {
+			return 1;
+		}
+		return n + getNum(n - 1);
+	}
+	console.log(getNum(3));
+</script>
+</html>

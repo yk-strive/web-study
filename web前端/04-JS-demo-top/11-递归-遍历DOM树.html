@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>递归-遍历dom树</title>
+</head>
+<body>
+	<h1>遍历 DOM 树</h1>
+  	<p style="color: green;">Tip: 可以在遍历的回调函数中任意定制需求</p>
+	<div>
+	    <ul id="list">
+	      	<li>123</li>
+	      	<li>456</li>
+	      	<li>789</li>
+	    </ul>
+	    <div>
+	      	<div>
+	        	<span>haha</span>
+	      	</div>
+	    </div>
+	</div>
+	<div id="demo_node">
+	    <ul>
+	      	<li>123</li>
+	    </ul>
+	    <p>hello</p>
+	    <h2>world</h2>
+	    <div>
+	     	<p>dsa</p>
+	      	<h3>
+	        	<span>dsads</span>
+	      	</h3>
+	    </div>
+	</div>
+</body>
+<script>
+	/**
+		遍历dom数, 并提供为需要的子元素添加事件
+	*/
+	function loadTree(parent, callback) {
+		for(var i = 0; i < parent.children.length; i++) {
+			var child = parent.children[i];
+			console.log(child);
+			if (callback) {
+				callback(child);
+			}
+			loadTree(child);
+		}
+	}
+	loadTree(document.body)
+</script>
+</html>
