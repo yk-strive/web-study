@@ -14,7 +14,9 @@
     }
 </style>
 <body>
-    <div id="test"></div>
+    <div id="test">
+        
+    </div>
 </body>
 <script>
     // 1. 普通函数调用
@@ -53,8 +55,23 @@
     }) 
 
     //5.作为定时器函数处理
-    setInterval(function() {
-        console.log('定时器函数处理-this', this);   //this -- window
-    }, 2000)
+    // setInterval(function() {
+    //     console.log('定时器函数处理-this', this);   //this -- window
+    // }, 2000)
+
+    // 6. arguments中
+    var number = 10;
+    function fn() {
+      console.log(this);
+    }
+    var obj = {
+      number: 2,
+      show: function(fn) {
+        this.number = 3;
+        fn();
+        arguments[0]();    //这里 argument[0] => fn(); 但调用时是arguments调用, 所以this指向 Arguments
+      }
+    };
+    obj.show(fn);
 </script>
 </html>
