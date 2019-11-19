@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>null 与 undefined</title>
+</head>
+<body>
+	<script>
+		console.log(null === undefined); // false
+		console.log(null == undefined); // true
+		/*
+		什么时候数据为undefined
+		*/
+		var a;
+		var b = undefined;
+		console.log(a); // undefined
+
+		function fn() {}
+		console.log(fn());  // undefined
+
+		function fnArg(a) {
+			console.log(a);
+		}
+		fnArg()  // undefined
+
+		var obj = {}
+		console.log(obj.a); // undefined
+
+		/*
+		什么时候数据为null
+		*/
+
+	</script>
+</body>
+</html>

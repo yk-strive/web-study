@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>值传递与引用传递</title>
+</head>
+<body>
+	<script>
+		var obj = {name: '鱼康'};
+		var nObj = obj;
+		nObj.name = '微白';
+		console.log(obj.name); // 微白
+		console.log(nObj.name) // 微白
+
+		var o = {name: '鱼康'};
+		var nO = obj;
+		nO = {age: 21};
+		console.log(o);
+		console.log(nO);
+	</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01_数据类型</title>
+</head>
+<body>
+	<!-- 
+	typeof
+		可以区别: 数值,字符串,布尔值,undefined,function
+		不能区分: null与对象. 一般对象与数组
+	instanceof
+		专门用来判断对象数据类型: Object, Array, Function
+	 -->
+	<script>
+		var str = 'abc';
+		var und = undefined;
+		var bool = false;
+		var num = 123;
+		var test = null;
+		var obj = {name: 'kobe'};
+		var arr = [12,2,4,4];
+		var fun = function () {}
+		function fn() {}
+
+		// typeof检测数据类型 string,number,boolean,undefined,function. object
+		console.log(typeof str); // 打印结果(字符串) --- string
+		console.log(typeof num); // 打印结果(字符串) --- number
+		console.log(typeof bool); // 打印结果(字符串) --- boolean
+		console.log(typeof und); // 打印结果(字符串) --- undefined
+		console.log(typeof obj); // 打印结果(字符串) --- object
+		console.log(typeof arr); // 打印结果(字符串) --- object
+		console.log(typeof test); // 打印结果(字符串) --- object
+		console.log(typeof fun); // 打印结果(字符串) --- function
+		console.log(typeof fn); // 打印结果(字符串) --- function
+
+		// instanceof检测机制: 判断右边的prototype(原型对象) 是否在左边的原型链上
+		console.log(str instanceof String); // false
+		console.log(num instanceof Number); // false
+		console.log(bool instanceof Boolean); // false
+		console.log(obj instanceof Object); // true
+		console.log(arr instanceof Array); // true
+		console.log(arr instanceof Object); // true
+		console.log(fun instanceof Function); // true
+		console.log(fun instanceof Object); // true
+		console.log(und instanceof undefined); // 报错
+		console.log(test instanceof null); // 报错
+	</script>
+</body>
+</html>
