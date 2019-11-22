@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02_原型链</title>
+</head>
+<body>
+	<script>
+		console.log(Object.prototype)
+		function fn() {
+
+		}
+		fn.prototype.eat = function() {
+			console.log('吃东西')
+		}
+
+		var fn1 = new fn();
+		console.log(fn1);
+		console.log(fn1.eat());
+		console.log(fn1.toString()); // '[object Object]'
+		console.log(fn1.run()) // run is not function
+	</script>
+</body>
+</html>
