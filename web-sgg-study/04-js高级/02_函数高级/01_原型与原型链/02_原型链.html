@@ -13,6 +13,10 @@
 		fn.prototype.eat = function() {
 			console.log('吃东西')
 		}
+		console.log(fn.__proto__ === Function.prototype);  // true
+		console.log(Function.__proto__ === Function.prototype) // true
+		console.log(Object.__proto__ === Function.prototype) // true
+		console.log(Function.prototype.__proto__ === Object.prototype) // true
 
 		var fn1 = new fn();
 		console.log(fn1);

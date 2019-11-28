@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02_执行上下文</title>
+</head>
+<body>
+	<!-- 
+	1. 代码分类(位置)
+		全局代码
+		函数代码(局部代码)
+	2. 全局执行上下文
+		* 在执行全局代码前将window确定为全局执行上下文
+		* 对全局数据进行预处理
+			* var定义的全局变量==>undefined, 添加为window属性
+			* function声明的全局函数==>赋值(fun), 添加为window的方法
+			* this==>赋值(指向window)
+		* 开始执行全局代码
+	3. 函数执行上下文
+		* 在调用函数,准备执行函数之前,创建对应的函数执行上下文对象
+		* 对局部数据进行预处理
+			* 形参变量==>赋值(实参)==>添加为执行上下文的属性
+			* arguments==>赋值(实参列表), 添加为执行上下文的属性
+			* var定义的局部变量==>undefined, 添加为执行上下文的属性
+			* function声明的函数==>赋值(fun), 添加为执行上下文的方法
+			* this==>赋值(调用函数的对象)
+		* 开始执行函数体代码
+	 -->
+	 <script>
+	 	/*
+		执行上下文
+		  定义: js引擎在js代码正式执行之前,会先创建执行环境,在执行环境中国做预处理工作
+		  工作内容: 
+		  	1. 创建空对象(执行上下文对象)
+		  	2. 该空对象用于收集变量, 函数, 函数的参数(预解析)
+		  	3. 创建作用域链
+		  	4. 确认this的指向: 全局-window; 局部-this--->?
+	 	*/
+	 	//1. 创建并执行环境, 创建空对象
+	 	var obj = {
+	 		username: undefined,
+	 		fun: function() {
+
+	 		}
+	 	}
+
+	 	console.log(username);
+	 	var username = 'kobe';
+
+	 	fun();
+	 	function fun() {
+
+	 	}
+	 </script>
+</body>
+</html>

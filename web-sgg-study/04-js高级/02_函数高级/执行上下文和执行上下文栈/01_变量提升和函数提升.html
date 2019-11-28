@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01_变量提升和函数提升</title>
+</head>
+<body>
+	<script>
+		// 变量提升(预解析) (预解析时, 提升至Global(Window))
+		/*
+		定义
+			js引擎在js代码正式执行之前会做一些预处理的工作
+			1. 找var 和 function 关键字
+			2. 找到 var以后将var后面的变量提前声明, 但不赋值 var a;
+			3. 找到function以后定义该函数
+		*/
+		console.log(ausername);
+		
+		var ausername = 'yk';
+		function aDemo(aAge) {
+			var asix = 'nan'
+			console.log('aDEMO-aAge')
+		}
+		aDemo(22);
+		var auser = '客户';
+		
+	</script>
+</body>
+</html>

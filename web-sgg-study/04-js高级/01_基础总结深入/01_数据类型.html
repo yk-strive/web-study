@@ -35,16 +35,23 @@
 		console.log(typeof fn); // 打印结果(字符串) --- function
 
 		// instanceof检测机制: 判断右边的prototype(原型对象) 是否在左边的原型链上
-		console.log(str instanceof String); // false
-		console.log(num instanceof Number); // false
-		console.log(bool instanceof Boolean); // false
-		console.log(obj instanceof Object); // true
-		console.log(arr instanceof Array); // true
-		console.log(arr instanceof Object); // true
-		console.log(fun instanceof Function); // true
-		console.log(fun instanceof Object); // true
-		console.log(und instanceof undefined); // 报错
-		console.log(test instanceof null); // 报错
+		// console.log(str instanceof String); // false
+		// console.log(num instanceof Number); // false
+		// console.log(bool instanceof Boolean); // false
+		// console.log(obj instanceof Object); // true
+		// console.log(arr instanceof Array); // true
+		// console.log(arr instanceof Object); // true
+		// console.log(fun instanceof Function); // true
+		// console.log(fun instanceof Object); // true
+		// console.log(und instanceof undefined); // 报错
+		// console.log(test instanceof null); // 报错
+
+
+		// 面试
+		console.log(Object instanceof Object); // true
+		console.log(Object instanceof Function); // true
+		console.log(Function instanceof Object); // true
+		console.log(Function instanceof Function); // true
 	</script>
 </body>
 </html>
