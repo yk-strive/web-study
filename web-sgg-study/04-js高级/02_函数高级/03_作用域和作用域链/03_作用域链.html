@@ -17,6 +17,7 @@
 	 -->
 	<script>
 		var a = 2;
+		console.log('原型链上找属性/方法-没找到返回',fn1.xx);
 		function fn1() {
 			var b = 3;
 			function fn2() {
@@ -24,7 +25,7 @@
 				console.log(c);
 				console.log(b);
 				console.log(a);
-				console.log(d);
+				console.log('作用域下找变量-没找到报错', d);
 			}
 			fn2()
 		}
