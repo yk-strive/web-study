@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03_面试题1</title>
+</head>
+<body>
+	<script>
+		// 代码片段
+		var name = "The Window";
+		var object = {
+			name: 'My Object',
+			getNameFunc: function() {
+				return function() {
+					return this.name;
+				}
+			}
+		};
+		console.log(object.getNameFunc()()); // 输出? 
+
+		// 代码片段
+		var name2 = "The Window";
+		var object2 = {
+			name2: 'My Object',
+			getNameFunc: function() {
+				var that = this;
+				return function() {
+					return that.name2;
+				}
+			}
+		};
+		console.log(object2.getNameFunc()()); // 输出?
+		console.log('------');
+	</script>
+</body>
+</html>

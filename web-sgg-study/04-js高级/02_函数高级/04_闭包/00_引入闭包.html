@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01_引入闭包</title>
+</head>
+<body>
+	<button>测试1</button>
+	<button>测试2</button>
+	<button>测试3</button>
+	<!-- 点击某个按钮, 提示 "点击的是第几个按钮" -->
+
+	<script>
+		var btns = document.getElementsByTagName('button');
+		console.log(btns);
+		/*
+			btns: 具备数组的一般特征,可以通过下标取值,还有length属性, 但是没有数组的一般方法
+		*/
+		console.log([1,2,3,4]);
+
+		for (var i = 0; i < btns.length; i++) {
+			// console.log(i)
+			(function(i) {
+				btns[i].onclick = function() {
+					console.log(i);
+				}
+			}(i))
+			
+		}
+
+
+		/**
+		复习: 前++和后++: 都是对原有的值进行+1操作.
+			a++ 与 ++a
+				先看到变量, 先赋值(即此次运算的结果就是该变量的值),后运算(即当前变量进行+1操作)
+				先看到运算符, 先运算(即此次运算的结果就是在变量值的基础上+1), 后赋值(运算完后的值赋给变量)
+		*/
+		console.log('----------')
+		var a = 1;
+		console.log(++a); // 2 a=2
+		console.log(a++); // 2 a=3
+		console.log(a++); // 3 a=4
+		console.log(a++); // 4 a=5
+		console.log(--a); // 4 a=4
+		console.log(a--); // 4 a=3
+		console.log(++a); // 4 a=4
+	</script>
+</body>
+</html>
