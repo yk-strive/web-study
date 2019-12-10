@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04_面试题2</title>
+</head>
+<body>
+	<script>
+		// 代码片段1
+		function fun() {
+			return console.log(1);
+		}
+		console.log(fun());
+
+		// 代码片段2
+		function foo(n, o) {
+			console.log(o);
+			return {
+				foo: function(m) {
+					return foo(m, n);
+				}
+			}
+		}
+		var a = foo(0);
+		a.foo(1);
+		a.foo(2);
+		a.foo(3);   // 问: 至此 打印的结果以此???  undefined, 0, 0, 0
+
+		var b = foo(0).foo(1).foo(2).foo(3); //问: 至此 打印的结果依次?? undefined, 0, 1, 2
+	
+		var c = foo(0).foo(1);
+		c.foo(2);
+		c.foo(3); // 问: 至此 打印的结果依次?? undefined, 0, 1, 1
+	</script>
+</body>
+</html>
