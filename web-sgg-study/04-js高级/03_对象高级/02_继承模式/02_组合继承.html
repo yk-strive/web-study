@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02_组合继承</title>
+</head>
+<body>
+	<!-- 
+	方式2: 原型链+借用构造函数的组合继承
+	1. 利用原型链实现对父类型对象的方法继承
+	2. 利用supper()借用父类型构造函数初始化形同属性
+	 -->
+	<script>
+		// 所用动物的构造函数
+		function Animal(name, age) {
+			this.name = name;
+			this.age = age;
+		}
+		Animal.prototype.eat = function() {
+			console.log('吃东西');
+		}
+
+		//猫类(子类)的构造函数
+		function Cat(name, age, sex) {
+			Animal.call(this, name, age); // 使用call, 减少重复代码
+			this.sex = sex;
+		}
+		// 让子类的原型 成为 父类的实例对象
+		Cat.prototype = new Animal();
+		// 当使用原型继承的时候, 注意矫正子类的构造器属性
+		Cat.prototype.constructor = Cat;
+
+		var tom = new Cat('tom', 1, 'boy');
+		console.log(tom);
+	</script>
+</body>
+</html>
