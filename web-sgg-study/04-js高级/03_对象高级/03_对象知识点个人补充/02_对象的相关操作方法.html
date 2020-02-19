@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象的相关操作方法</title>
+</head>
+<body>
+	<script>
+		var xiaohong = {
+			name: '小红',
+			age: 21,
+			running: function() {
+				console.log('运动跑')
+			},
+			get N() {
+				return this.name
+			},
+			set N(name) {
+				this.name = name;
+			}
+		}
+		// 对象的 getter/setter的用法. N属性 又叫存取器属性
+		console.log(xiaohong);
+		xiaohong.N = '小明';
+		console.log(xiaohong.N);
+
+		//0. Object.defineProperty(对象名, 对象某一属性, {设置属性描述符}); -- 该方法要么修改已有属性,要么新建自有属性, 但不能修改继承属性
+		// Object.defineProperties(对象名, {x:{属性描述符}, y: {}}) // 多个属性的修改或新建
+		Object.defineProperty(xiaohong, 'age', {
+			enumerable: false
+		})
+		//1. Object.keys -返回对象中 可枚举的且是自有属性的属性名 Array
+		console.log(Object.keys(xiaohong)); // ['name', 'running', 'N']
+
+		//2. Object.getOwnPropertyNames // 返回对象中的 自有属性的属性名 Array
+		console.log(Object.getOwnPropertyNames(xiaohong)); // ['name', 'age', 'running', 'N']
+
+		//3. Object.getOwnPropertyDescriptor(对象名, 对象属性) // 获取某个对象特定属性的属性描述符
+		console.log(Object.getOwnPropertyDescriptor(xiaohong, 'name')); // {value:'小明',writable:true,enumerable: true, configurable: true}
+		console.log(Object.getOwnPropertyDescriptor(xiaohong, 'age'));
+		//{value:21, writable:true, enumerable: false, configurable: true}
+		console.log(Object.getOwnPropertyDescriptor(xiaohong, 'N')); // N 存取器属性
+		//{get: f, set: f, enumerable: true, configurable: true}
+
+		//4. Object.getPrototypeOf() 查询对象的原型
+		console.log(Object.getPrototypeOf(xiaohong));
+		//5. isPrototypeOf // 检测一个对象是否是另一个对象的原型(或处于原型链中)
+		console.log(Object.isPrototypeOf(xiaohong)) // false
+		console.log(Object.prototype.isPrototypeOf(xiaohong)) // true
+	</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性特性</title>
+</head>
+<body>
+	<script>
+		var xiaohong = {
+			name: '小红',
+			age: 21,
+			get N() {
+				return this.name
+			},
+			set N(name) {
+				this.name = name;
+			}
+		}
+		/**
+		一个属性包含一个名字 和 4个特性
+		4个特性
+			属性值(value)
+			可写性(writable)
+			可枚举性(enumerable)
+			可配置性(configurable)
+
+		存取器属性 不具有值(value) 和 可写性, 他们的可写性有 setter方法存在与否决定的.
+		4个特性(存取器属性)
+			读取(get)
+			写入(set)
+			可枚举性(enumerable)
+			可配置性(configurable)
+
+		Object.getOwnPropertyDescriptor(对象名, '对象属性名') 可获取该属性的属性描述符, 返回一个对象
+
+		Object.defineProperty(对象名, '属性值', {设置/修改 属性的属性描述符}); 修改或新建属性, 但只会是自有属性
+		Object.defineProperties(对象名, {属性名: {属性描述符}, 属性名2: {属性描述符}}); 一次性修改或新建多个属性.
+		*/
+		
+		//defineProperty()使用的完整规则, 违反使用都会报错
+			//a: 对象是不可扩展的-- 可编辑已有的自有属性, 但不能新增属性
+
+			//b: 属性是不可配置的(configurable: false), 则不能修改它的可配置性和可枚举性
+			Object.defineProperty(xiaohong, 'age', { configurable: false });
+				// 这里就报错: Uncaught TypeError: Cannot redefine property: age
+			Object.defineProperty(xiaohong, 'age', { configurable: true, enumerable: true });
+
+			//c: 存取器属性是不可配置的(configurable: false), 则不能修改其getter/setter方法, 也不能将其转换为数据属性
+
+			//d: 数据属性是不可配置的, 则不能将其转换为存取器属性
+
+			//e: 数据属性是不可配置的, 则不能将它的 可写性从 false改为true, 但可以从true改为false
+
+			//f: 数据属性是不可配置且不可写, 则不能修改属性的值; 可配置但不可写,属性的值是可以修改的.
+	</script>
+</body>
+</html>

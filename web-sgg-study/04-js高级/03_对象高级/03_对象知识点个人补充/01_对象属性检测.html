@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象属性检测</title>
+</head>
+<body>
+<script>
+
+	function Person(name, address, age) {
+		this.name = name;
+		this.address = address;
+		this.age = age;
+	}
+
+	var xiaoming = new Person('小明', '永济');
+	console.log(Object.getOwnPropertyNames(xiaoming));
+	console.log(xiaoming) // {name: '小明', address: '永济', age: undefined};
+
+	//1. in 运算符 左侧属性 in 右侧对象. -- 可以检测 对象自有属性(本身) / 继承属性 
+	console.log('name' in xiaoming)  // true
+	console.log('age' in xiaoming) // true
+	console.log('toString' in xiaoming); // true
+
+	//2. obj.hasOwnProperty('属性名') -- 检测给定的属性名是否 是对象的自有属性; 对于继承属性检测返回false
+	console.log(xiaoming.hasOwnProperty('name'));  // true
+	console.log(xiaoming.hasOwnProperty('age'));  // true
+	console.log(xiaoming.hasOwnProperty('toString'));  // false
+
+	//3. obj.propertyIsEnumerable('属性名') -- 是 hasOwnProperty的增强版, 检测到是自有属性且该属性的可枚举性为 true时才返回true;
+	console.log(xiaoming.propertyIsEnumerable('name'));  // true
+	console.log(xiaoming.propertyIsEnumerable('age'));  // true
+	console.log(xiaoming.propertyIsEnumerable('toString'));  // false
+
+	//4. !== 判断; 和 in运算符 的不同之处: in 可以区分不存在的属性 和 存在但值为undefined的属性
+	console.log(xiaoming.name !== undefined); // true
+	console.log(xiaoming.age !== undefined); // false -- 注意,age属性在创建实例对象时没有给值;但是属性是存在的
+	console.log(xiaoming.yy !== undefined); // false -- yy属性是不存在的
+	console.log(xiaoming.toString !== undefined) // true
+</script>
+</body>
+</html>

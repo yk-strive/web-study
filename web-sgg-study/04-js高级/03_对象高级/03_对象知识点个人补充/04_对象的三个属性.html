@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象的三个属性</title>
+</head>
+<body>
+	<script>
+		function Person() {};
+		var obj = {};
+		var p = new Person();
+		//1. 原型属性
+		/*
+			通过对象字面量创建的对象 使用 Object.prototype作为它的原型
+			通过new 创建的对象 使用构造函数的prototype属性 作为它的原型
+			通过Object.create()创建的对象, 使用第一个参数(也可以是null) 作为它的原型
+
+			ECMAScript5 Object.getPrototypeOf() 查询对象的原型
+			ECMAScript3 没有等价的函数, 但是经常使用表达式 obj.constrcutor.prototype来检测一个对象的原型
+
+			检测一个对象是否是另一个对象的原型(或处于原型链中) 可以使用 isPrototypeOf()
+		*/
+		console.log(Object.getPrototypeOf(obj))
+		console.log(Object.getPrototypeOf(p), Person.prototype.isPrototypeOf(p))
+
+		//2. 类属性: 是一个字符串, 用以表示对象的类型信息.
+		console.log(p.toString())
+
+		function classof(o) { // 检测对象的类型. 对于自定义的类,检测的依旧是Object
+			if(o === null) return "Null";
+			if(o === undefined) return "Undefined";
+			return Object.prototype.toString.call(o).slice(8, -1);
+		}
+		console.log(classof(obj));
+		console.log(classof(p));
+		console.log(classof(''));
+		console.log(classof(1));
+		console.log(classof(false));
+		console.log(classof(new Date()));
+
+		//3. 可扩展性: 表示是否可以给对象添加新属性. 所有内置对象和自定义对象都是显式可扩展的
+		/*
+			Object.esExtensible(obj); 判断对象是否可扩展
+			Object.preventExtensions(obj); 将对象转为不可扩展的. 一旦转换为不可扩展,就无法在转换回可扩展的了.
+			Object.seal(obj): 将对象设置为不可扩展,同时将对象的所有自有属性都设置为不可配置的.也就是说,不能给该对象添加新属性,已有的属性也不能删除或配置.
+			Object.isSealed(obj): 检测对象是否封闭. 封闭的对象是不能解封的.
+			Object.freeze(obj): 将更严格地锁定对象-"冻结".即对象设置为不可扩展和属性设置为不可配置,以及自有的所有数据属性设置为只读.
+			Object.isFrozen(obj): 检测对象是否冻结
+		*/
+	</script>
+</body>
+</html>
