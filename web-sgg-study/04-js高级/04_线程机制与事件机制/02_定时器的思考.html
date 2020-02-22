@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定时器的思考</title>
+</head>
+<body>
+	<script>
+		var old = Date.now();
+		setTimeout(function() {
+			console.log('花费的时间:', Date.now() - old);
+		}, 2000);
+
+		// 定时器下面加入这段 较耗时操作, 定时器会正常2秒后打印??
+		// 结果: 不会, 延时打印的时间 让人不能接受. 
+		// 结论: 千万不要在定时器的后面加入代码量超大的代码片段
+		for (var i = 0; i < 100000; i++) {
+			console.log(i)
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>10_京东1</title>
+</head>
+<body>
+
+<!--
+1. 难度系数: ★★★★
+2. 技术点:
+  1). 原型与原型链
+  2). 实例对象,构造函数,Object, Function的关系
+-->
+<script type="text/javascript">
+
+ /* console.log(Object instanceof Function);  // true
+  console.log(Object instanceof Object);  // true
+  console.log(Function instanceof Object);  // true
+  console.log(Function instanceof Function);  // true
+
+
+  var F = function(){};
+  Object.prototype.a = function(){
+    console.log('a()')
+  };
+  Function.prototype.b = function(){
+    console.log('b()')
+  };
+  var f = new F();
+
+  F.a(); // ?//a()
+  F.b(); // ?//b()
+  f.a(); // ?//a()
+  f.b() // ?//报错*/
+
+
+  // 函数产生嵌套时，内部函数引用外部函数变量的数据类型为基本数据类型时，因为时值传递不会影响，
+  // 如果为引用类型会影响
+      function test() {
+        var n = 4399;
+        let add = function(){
+            n++;
+            console.log(n);
+            return n;
+        }
+        return{n:n,add:add}
+    }
+    var result = test();//闭包{n:4,add:4400}
+    var result2 = test();
+    result.add();//4400
+    result.add();//4401
+    console.log(result.n);//4399
+    result2.add();//4400
+
+  /*function test() {
+    var n = {name:'kobe'};
+    let add = function(){
+
+      console.log(n);
+      n.name = 'wade';
+      return n;
+    }
+    return{n:n,add:add}
+  }
+  var result = test();
+  var result2 = test();
+  result.add();//{name: "kobe"}
+  result.add();//{name: "wade"}
+  console.log(result.n);//{name: "wade"}
+  result2.add();//{name: "kobe"}*/
+
+</script>
+</body>
+</html>
